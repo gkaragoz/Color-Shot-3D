@@ -15,8 +15,14 @@ public class Projectile : MonoBehaviour, IPooledObject {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Target") {
+        if (other.tag == "TargetBlue") {
             this.gameObject.SetActive(false);
+        } else if (other.tag == "TargetRed") {
+            this.gameObject.SetActive(false);
+        } else if (other.tag == "TargetGreen") {
+            this.gameObject.SetActive(false);
+        } else {
+            Debug.LogError("DEAD!");
         }
     }
 
