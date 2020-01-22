@@ -6,8 +6,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Transform _firePivot = null;
     [SerializeField]
-    private GameObject _projectilePrefab = null;
-    [SerializeField]
     private float _fireRate = 1.0f;
 
     private float _nextFire = 0f;

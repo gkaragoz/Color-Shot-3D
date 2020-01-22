@@ -4,7 +4,7 @@ public class TargetGenerator : MonoBehaviour {
 
     [Header("Initializations")]
     [SerializeField]
-    private Transform _targetSpawnPoint;
+    private Transform _targetSpawnPoint = null;
 
     private Target[] _target;
 

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
     private TargetGenerator _targetGenerator = null;
 
     [SerializeField]
-    private Color[] _colors;
+    private Color[] _colors = null;
 
     public Target[] Target {
         get;
