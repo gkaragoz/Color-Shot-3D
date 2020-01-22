@@ -20,41 +20,26 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private TargetGenerator _targetGenerator = null;
 
-    public Target[] TargetBlues {
+    [SerializeField]
+    private Color[] _colors;
+
+    public Target[] Target {
         get;
         private set;
     }
-    public Target[] TargetReds {
-        get;
-        private set;
-    }
-    public Target[] TargetGreens {
-        get;
-        private set;
+
+    public Color GetColor(int index) {
+        return _colors[index];
     }
 
     private void Start() {
         ObjectPooler.instance.InitializePool("Projectile");
-        ObjectPooler.instance.InitializePool("TargetBlue");
-        ObjectPooler.instance.InitializePool("TargetRed");
-        ObjectPooler.instance.InitializePool("TargetGreen");
+        ObjectPooler.instance.InitializePool("Target");
 
-        GameObject[] targetBlueObjects = ObjectPooler.instance.GetGameObjectsOnPool("TargetBlue");
-        TargetBlues = new Target[targetBlueObjects.Length];
-        for (int ii = 0; ii < TargetBlues.Length; ii++) {
-            TargetBlues[ii] = targetBlueObjects[ii].GetComponent<Target>();
-        }
-
-        GameObject[] targetRedObjects = ObjectPooler.instance.GetGameObjectsOnPool("TargetRed");
-        TargetReds = new Target[targetRedObjects.Length];
-        for (int ii = 0; ii < TargetReds.Length; ii++) {
-            TargetReds[ii] = targetRedObjects[ii].GetComponent<Target>();
-        }
-
-        GameObject[] targetGreenObjects = ObjectPooler.instance.GetGameObjectsOnPool("TargetGreen");
-        TargetGreens = new Target[targetGreenObjects.Length];
-        for (int ii = 0; ii < TargetGreens.Length; ii++) {
-            TargetGreens[ii] = targetGreenObjects[ii].GetComponent<Target>();
+        GameObject[] targetBlueObjects = ObjectPooler.instance.GetGameObjectsOnPool("Target");
+        Target = new Target[targetBlueObjects.Length];
+        for (int ii = 0; ii < Target.Length; ii++) {
+            Target[ii] = targetBlueObjects[ii].GetComponent<Target>();
         }
 
         _targetGenerator.GenerateTargets();

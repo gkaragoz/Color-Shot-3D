@@ -447,18 +447,9 @@ MonoBehaviour:
       type: 3}
     size: 25
   - parentTransform: {fileID: 1809442080}
-    name: TargetBlue
+    name: Target
     prefab: {fileID: 5570629267376652576, guid: 1f1e9a84ba39acf4d9f6b4ed72e5b7e4,
       type: 3}
-    size: 25
-  - parentTransform: {fileID: 1809442080}
-    name: TargetGreen
-    prefab: {fileID: 2912124053204698536, guid: a883b38b24daaf64bb362deae4bf19fd,
-      type: 3}
-    size: 25
-  - parentTransform: {fileID: 1809442080}
-    name: TargetRed
-    prefab: {fileID: 887641947621971657, guid: 1437b558303d76847a1b23bcc6fdeb52, type: 3}
     size: 25
 --- !u!114 &1809442082
 MonoBehaviour:
@@ -474,6 +465,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1151427813}
   _targetGenerator: {fileID: 1809442083}
+  _colors:
+  - {r: 1, g: 0.04794642, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.035513878, a: 1}
+  - {r: 0, g: 0.15980244, b: 1, a: 1}
 --- !u!114 &1809442083
 MonoBehaviour:
   m_ObjectHideFlags: 0
