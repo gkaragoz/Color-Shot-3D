@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 
     #endregion
 
+    public Action<Enums.GameState> OnGameStateChanged;
     public Action<int> OnScoreAdded;
 
     [Header("Initializations")]
@@ -22,6 +23,17 @@ public class GameManager : MonoBehaviour {
     private PlayerController _playerController = null;
     [SerializeField]
     private TargetGenerator _targetGenerator = null;
+
+    [Header("Debug")]
+    [SerializeField]
+    [Utils.ReadOnly]
+    private Enums.GameState _gameState = Enums.GameState.MainMenu;
+    [SerializeField]
+    [Utils.ReadOnly]
+    private bool _hasGameObjectsInitialized = false;
+    [SerializeField]
+    [Utils.ReadOnly]
+    private bool _isGamePaused = false;
 
     public Target[] Target {
         get;

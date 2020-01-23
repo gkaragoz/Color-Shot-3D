@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float _fireRate = 1.0f;
 
+    [Header("Debug")]
+    [SerializeField]
+    [Utils.ReadOnly]
     private float _nextFire = 0f;
 
     public int Score { get; private set; }

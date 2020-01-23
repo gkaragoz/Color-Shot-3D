@@ -6,8 +6,12 @@ public class Target : MonoBehaviour, IPooledObject {
     public Action<int> OnProjectileTriggered;
     
     public Color color = Color.blue;
-    public int index = -1;
     public int score = 10;
+
+    [Header("Debug")]
+    [SerializeField]
+    [Utils.ReadOnly]
+    private int _index = -1;
 
     public void OnObjectReused() {
         this.gameObject.SetActive(true);
@@ -26,13 +30,17 @@ public class Target : MonoBehaviour, IPooledObject {
         GetComponent<Renderer>().SetPropertyBlock(block);
     }
 
+    public void SetIndex(int index) {
+        this._index = index;
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Projectile") {
             this.gameObject.SetActive(false);
 
             GameManager.instance.AddScore(score);
 
-            OnProjectileTriggered.Invoke(index);
+            OnProjectileTriggered.Invoke(_index);
         }
     }
 

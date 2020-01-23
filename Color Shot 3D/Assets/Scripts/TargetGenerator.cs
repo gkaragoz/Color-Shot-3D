@@ -8,6 +8,9 @@ public class TargetGenerator : MonoBehaviour {
     [SerializeField]
     private Color[] _colors = null;
 
+    [Header("Debug")]
+    [SerializeField]
+    [Utils.ReadOnly]
     private Target[] _target;
 
     public void GenerateTargets() {
@@ -18,7 +21,7 @@ public class TargetGenerator : MonoBehaviour {
         for (int ii = 0; ii < _target.Length; ii++) {
             _target[ii].transform.position = positionOffset;
             _target[ii].gameObject.SetActive(true);
-            _target[ii].index = ii;
+            _target[ii].SetIndex(ii);
 
             if (ii % 2 == 0) {
                 _target[ii].SwitchColor(GetColorFromEnum(Enums.Colors.Red));
