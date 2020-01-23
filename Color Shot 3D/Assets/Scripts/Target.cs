@@ -13,6 +13,7 @@ public class Target : MonoBehaviour, IPooledObject {
     
     public Color color = Color.Blue;
     public int index = -1;
+    public int score = 10;
 
     public void OnObjectReused() {
         this.gameObject.SetActive(true);
@@ -47,6 +48,7 @@ public class Target : MonoBehaviour, IPooledObject {
             this.gameObject.SetActive(false);
 
             GameManager.instance.RemainingTargetsCount--;
+            GameManager.instance.AddScore(score);
 
             OnProjectileTriggered.Invoke(index);
         }

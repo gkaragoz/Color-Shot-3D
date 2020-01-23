@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour {
     }
 
     #endregion
+
+    public Action<int> OnScoreAdded;
 
     [Header("Initializations")]
     [SerializeField]
@@ -46,6 +49,12 @@ public class GameManager : MonoBehaviour {
 
         RemainingTargetsCount = targetBlueObjects.Length;
         _targetGenerator.GenerateTargets();
+    }
+
+    public void AddScore(int value) {
+        _playerController.AddScore(value);
+
+        OnScoreAdded?.Invoke(_playerController.Score);
     }
 
 }
