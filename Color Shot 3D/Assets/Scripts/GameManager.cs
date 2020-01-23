@@ -23,19 +23,12 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private TargetGenerator _targetGenerator = null;
 
-    [SerializeField]
-    private Color[] _colors = null;
-
     public Target[] Target {
         get;
         private set;
     }
 
     public int RemainingTargetsCount { get; private set; }
-
-    public Color GetColor(int index) {
-        return _colors[index];
-    }
 
     private void Start() {
         ObjectPooler.instance.InitializePool("Projectile");

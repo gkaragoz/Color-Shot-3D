@@ -3,15 +3,9 @@ using UnityEngine;
 
 public class Target : MonoBehaviour, IPooledObject {
 
-    public enum Color {
-        Red = 0,
-        Green = 1,
-        Blue = 2
-    }
-
     public Action<int> OnProjectileTriggered;
     
-    public Color color = Color.Blue;
+    public Color color = Color.blue;
     public int index = -1;
     public int score = 10;
 
@@ -27,18 +21,7 @@ public class Target : MonoBehaviour, IPooledObject {
         this.color = color;
 
         var block = new MaterialPropertyBlock();
-
-        switch (color) {
-            case Color.Red:
-                block.SetColor("_BaseColor", GameManager.instance.GetColor((int)color));
-                break;
-            case Color.Green:
-                block.SetColor("_BaseColor", GameManager.instance.GetColor((int)color));
-                break;
-            case Color.Blue:
-                block.SetColor("_BaseColor", GameManager.instance.GetColor((int)color));
-                break;
-        }
+        block.SetColor("_BaseColor", color);
 
         GetComponent<Renderer>().SetPropertyBlock(block);
     }

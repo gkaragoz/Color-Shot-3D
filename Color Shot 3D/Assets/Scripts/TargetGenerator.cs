@@ -5,6 +5,8 @@ public class TargetGenerator : MonoBehaviour {
     [Header("Initializations")]
     [SerializeField]
     private Transform _targetSpawnPoint = null;
+    [SerializeField]
+    private Color[] _colors = null;
 
     private Target[] _target;
 
@@ -19,10 +21,10 @@ public class TargetGenerator : MonoBehaviour {
             _target[ii].index = ii;
 
             if (ii % 2 == 0) {
-                _target[ii].SwitchColor(Target.Color.Red);
+                _target[ii].SwitchColor(GetColorFromEnum(Enums.Colors.Red));
             }
             else {
-                _target[ii].SwitchColor(Target.Color.Blue);
+                _target[ii].SwitchColor(GetColorFromEnum(Enums.Colors.Blue));
             }
 
             _target[ii].OnProjectileTriggered += OnProjectileTriggered;
@@ -37,6 +39,10 @@ public class TargetGenerator : MonoBehaviour {
                 _target[ii].GoDown();
             }
         }
+    }
+
+    private Color GetColorFromEnum(Enums.Colors colorEnum) {
+        return _colors[(int)colorEnum];
     }
 
 }
