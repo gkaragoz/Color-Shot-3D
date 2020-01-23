@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     private float _nextFire = 0f;
 
     public int Score { get; private set; }
+    public int FireCounter { get; private set; }
 
     private void Update() {
         if (Input.GetKey(KeyCode.Space) && Time.time > _nextFire) {
@@ -21,13 +22,18 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Fire() {
-        if (GameManager.instance.RemainingTargetsCount > 0) {
+        if (FireCounter > 0) {
             ObjectPooler.instance.SpawnFromPool("Projectile", _firePivot.position, Quaternion.identity);
+            FireCounter--;
         }
     }
 
     public void AddScore(int value) {
         Score += value;
+    }
+
+    public void SetFireCounter(int remainingTargets) {
+        FireCounter = remainingTargets;
     }
 
 }

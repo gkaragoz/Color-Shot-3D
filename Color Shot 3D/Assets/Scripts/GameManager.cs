@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
         private set;
     }
 
-    public int RemainingTargetsCount { get; set; }
+    public int RemainingTargetsCount { get; private set; }
 
     public Color GetColor(int index) {
         return _colors[index];
@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour {
 
         RemainingTargetsCount = targetBlueObjects.Length;
         _targetGenerator.GenerateTargets();
+
+        _playerController.SetFireCounter(RemainingTargetsCount);
     }
 
     public void AddScore(int value) {
