@@ -46,6 +46,8 @@ public class Target : MonoBehaviour, IPooledObject {
         if (other.tag == "Projectile") {
             this.gameObject.SetActive(false);
 
+            GameManager.instance.RemainingTargetsCount--;
+
             OnProjectileTriggered.Invoke(index);
         }
     }

@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour {
         private set;
     }
 
+    public int RemainingTargetsCount { get; set; }
+
     public Color GetColor(int index) {
         return _colors[index];
     }
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour {
             Target[ii] = targetBlueObjects[ii].GetComponent<Target>();
         }
 
+        RemainingTargetsCount = targetBlueObjects.Length;
         _targetGenerator.GenerateTargets();
     }
 

@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Fire() {
-        ObjectPooler.instance.SpawnFromPool("Projectile", _firePivot.position, Quaternion.identity);
+        if (GameManager.instance.RemainingTargetsCount > 1) {
+            ObjectPooler.instance.SpawnFromPool("Projectile", _firePivot.position, Quaternion.identity);
+        }
     }
 
 }
